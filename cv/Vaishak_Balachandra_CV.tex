@@ -1,0 +1,326 @@
+%=====================================================================
+%  Curriculum Vitae - Vaishak Balachandra
+%  Public CV for vaishakbalachandra.github.io (academic CV convention):
+%    - name + rule at top; no document-title running header
+%    - continuation line "Balachandra, V., page N" on pages 2+
+%    - bold title-case flush-left headings, indented body
+%    - peer-reviewed and non-peer-reviewed work in SEPARATE sections
+%    - links clickable but not colored, no photo, reverse-chronological
+%  Overleaf-ready.
+%=====================================================================
+\documentclass[10pt]{article}
+\input{glyphtounicode}\pdfgentounicode=1
+
+\usepackage[a4paper,
+            top=1.0in,
+            bottom=1.0in,
+            left=1.0in,
+            right=1.0in,
+            headheight=14pt,
+            headsep=14pt]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Font family (Uncomment your chosen font package here)
+%\usepackage{newpxtext,newpxmath}       % Palatino
+% \usepackage{charter}                  % Charter
+% \usepackage{newtxtext,newtxmath}     % Times Roman
+% (Leave all commented out for default Computer Modern)
+
+\usepackage{array}
+
+% ---- Links are clickable but not colored, so the page prints cleanly. ----
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\hypersetup{pdftitle={Curriculum Vitae - Vaishak Balachandra},pdfauthor={Vaishak Balachandra},pdfsubject={Curriculum vitae}}
+
+% ---------------- Continuation header (pages 2+) ------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\fontsize{9.5pt}{11pt}\selectfont Balachandra, V., page \thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.05}
+\frenchspacing
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000
+\widowpenalty=10000
+
+% ---------------------------------------------------------------
+%  Structural macros
+% ---------------------------------------------------------------
+\newcommand{\cvsection}[1]{%
+  \vspace{8pt}%
+  {\fontsize{11pt}{13pt}\selectfont\textbf{#1}}%
+  \par\nobreak\vspace{4pt}%
+}
+
+\newenvironment{cvindent}{\par\advance\leftskip by 0.40in}{\par}
+
+\newcommand{\cvrow}[2]{\noindent #1\hfill #2\par}
+
+\newcommand{\cvdesc}[1]{\par #1\par\vspace{5.5pt}}
+
+\newcommand{\cvbib}[1]{\par\noindent\hangindent=1.4em\hangafter=1 #1\par\vspace{4pt}}
+
+\newcommand{\cvline}[1]{\par\noindent #1\par\vspace{4pt}}
+
+% Labeled line: bold lead-in then text
+\newcommand{\cvlab}[2]{\par\noindent\hangindent=1.4em\hangafter=1\textbf{#1} #2\par\vspace{4pt}}
+
+\begin{document}
+\thispagestyle{empty}
+
+% ================= NAME + RULE =================
+{\fontsize{14pt}{17pt}\selectfont\textbf{Vaishak Balachandra}}
+\vspace{3pt}
+\hrule height 0.6pt
+\vspace{8pt}
+
+\begin{cvindent}
+\cvrow{Seattle, Washington, United States}{\href{mailto:me.vaishakbalachandra@gmail.com}{me.vaishakbalachandra@gmail.com}}
+\cvrow{\href{https://vaishakbalachandra.github.io}{vaishakbalachandra.github.io}}{\href{https://github.com/vaishakbalachandra}{github.com/vaishakbalachandra}}
+\cvrow{}{\href{https://www.linkedin.com/in/vaishakbalachandra/}{linkedin.com/in/vaishakbalachandra}}
+\end{cvindent}
+
+% ================= EDUCATION =================
+\cvsection{Education}
+\begin{cvindent}
+
+\cvrow{\textbf{M.S.\ Computer Science (Thesis)}}{August 2024 -- May 2026}
+\cvrow{Purdue University Northwest, Hammond, Indiana}{GPA 3.82/4.00}
+\cvdesc{Thesis track; 33 credit hours including six of thesis research. Graduate coursework in
+computational mathematics (MA 57700, Department of Mathematics), statistical computing, privacy in AI
+models, programming languages, algorithms and data science. Thesis: \emph{VertiSplitRAG: Privacy-Preserving Retrieval-Augmented Generation Through Vertical Attribute Partitioning}. Thesis advisor: Prof.\ Shafkat Islam.
+Thesis committee: Prof.\ Hairong Zhao, Prof.\ Yang Ni.}
+
+\cvrow{\textbf{B.E.\ Electronics and Telecommunication Engineering}}{2020 -- May 2024}
+\cvrow{RV College of Engineering, Bengaluru, India}{CGPA 8.55/10.00}
+\cvdesc{Mathematics-intensive engineering curriculum: five mathematics courses, including linear algebra,
+statistics and probability theory, and discrete and integral transforms, alongside signals and systems
+and digital signal processing. Capstone project: \emph{PneumoGAN}, a generative adversarial network for pneumonia detection. Final semester,
+devoted to the major project: SGPA 10.00/10.}
+
+\par\vspace{2pt}\noindent\textbf{Relevant coursework}\par\nobreak\vspace{3pt}
+\cvlab{Graduate --- Purdue University Northwest.}{MA 57700 Computational Mathematics~I (A); STAT 50001
+Statistical Computing (A); CS 69010 Privacy in AI Models (A+); CS 51530 Programming Languages (A+);
+CS 59000 Topics in Data Science (A$-$); CS 59000 Advanced Computer Communication Networks (A$-$);
+CS 51520 Operating Systems (A); CS 27500 Data Structures (A); CS 51510 Algorithms (B).}
+\cvlab{Undergraduate mathematics --- RV College of Engineering.}{Linear Algebra, Statistics and
+Probability Theory (A); Discrete and Integral Transforms (A); Advanced Statistical Methods (B);
+Engineering Mathematics~I (A); Engineering Mathematics~II (B).}
+\cvlab{Undergraduate signals and computing.}{Digital Signal Processing (S); Digital Modulation and
+Coding (A); Signals and Systems (B); Object-Oriented Programming with C++ (S); Programming in C (A);
+Deep Learning and Artificial Intelligence (A); CMOS Digital Integrated Circuits (S); Analysis and
+Design of Digital Circuits (A); Operating Systems (A).}
+\cvline{\fontsize{9pt}{11pt}\selectfont On RV College of Engineering's scale, \emph{S} is the highest
+grade awarded.}
+\end{cvindent}
+
+% ================= RESEARCH INTERESTS =================
+\cvsection{Research Interests}
+\begin{cvindent}
+\cvline{\textbf{Latent state estimation.} Recovering quantities that are never observed directly from
+noisy, sparse and incomplete data, and quantifying how wrong the resulting estimate is.}
+\cvline{\textbf{Regime switching and non-stationary data.} Adaptive estimation when the relationship between a hidden
+state and its observations changes; slow, mixed-frequency and functional observations, such as filings,
+ownership compositions and volatility surfaces, read alongside prices.}
+\cvline{\textbf{Decisions under model uncertainty.} Capital allocation when the estimate itself is in
+doubt; distributionally robust formulations.}
+\cvline{\textbf{Partial observability.} What an observer with a restricted view of a system can infer about
+the rest of it: the question behind my thesis, applied to markets.}
+\end{cvindent}
+
+% ================= THESIS =================
+\cvsection{Master's Thesis}
+\begin{cvindent}
+
+\cvlab{Title.}{\emph{VertiSplitRAG: Privacy-Preserving Retrieval-Augmented Generation Through Vertical
+Attribute Partitioning.} Purdue University Northwest, May 2026. \href{https://doi.org/10.25394/PGS.32166906}{doi:10.25394/PGS.32166906}}
+
+\cvlab{Advisor.}{Prof.\ Shafkat Islam.\quad \textbf{Committee.} Prof.\ Hairong Zhao, Prof.\ Yang Ni.}
+
+\cvlab{Summary.}{Retrieval-augmented generation systems embed every sensitive attribute of a record
+jointly, and existing privacy methods apply protection only after the embeddings are formed, leaving
+multi-attribute leakage unaddressed. This thesis treats the exposure as architectural rather than
+procedural: what each component of the system is permitted to observe is a design decision. It proposes
+a privacy-by-design framework that restructures data through vertical attribute partitioning
+\emph{before} embedding, so that no single component ever observes a complete record. Four
+architectural variants were implemented and evaluated on synthetic medical patient records --- Baseline
+RAG (BAS), VertiSplitRAG for single-attribute queries (VSS), VertiSplitRAG for multi-attribute queries
+with a shared LLM (VSM), and VertiSplitRAG with a multi-LLM architecture (VSML) --- measured on privacy
+protection, answer quality and system latency. VSML achieves complete cross-attribute isolation through
+\emph{information-theoretic structural separation}, maintaining the full privacy budget across all
+queries where the other systems progressively exhaust their isolation guarantees, at an acceptable
+utility cost: faithfulness remains competitive with the baseline, and latency is lower than the baseline
+for single-attribute queries.}
+\end{cvindent}
+
+% ================= RESEARCH =================
+\cvsection{Research Experience}
+\begin{cvindent}
+
+\cvrow{\textbf{Graduate Thesis Researcher}}{2025 -- May 2026}
+\cvrow{Department of Computer Science}{Purdue University Northwest}
+\cvdesc{Read beyond the assigned literature to locate an unaddressed weakness in existing
+retrieval-augmented architectures, and carried an idea across from system design into privacy
+engineering to address it. Specified, implemented and benchmarked four competing architectures,
+designing the evaluation protocol and the privacy-accounting methodology. Built the system in Python and PyTorch, serving local language models through vLLM, orchestrating the multi-model pipeline with LangGraph, and retrieving through a vector database. Identified
+and independently secured both thesis committee members. Authored the resulting conference paper and
+presented it.}
+
+\cvrow{\textbf{Undergraduate Capstone Researcher --- \emph{PneumoGAN}}}{2023 -- May 2024}
+\cvrow{Department of Electronics and Telecommunication}{RV College of Engineering}
+\cvdesc{Built a generative adversarial network that synthesizes chest X-ray images to augment scarce training data for pneumonia detection, trained on the NIH chest X-ray dataset; the resulting classifier reached 94.99\% accuracy. Carried as both the minor and the major project, each graded S.}
+
+\cvrow{\textbf{Undergraduate Researcher --- Low-Power Digital Circuit Design}}{2023}
+\cvrow{Department of Electronics and Telecommunication}{RV College of Engineering}
+\cvdesc{Co-designed with H.~Raghuram a power- and area-efficient 4--2 compressor architecture for tree multipliers: analyzed its theory, operation and arithmetic, then applied low-power design techniques --- AVLS, LECTOR and adiabatic logic --- to reduce
+power consumption while preserving logic behavior. Experimental validation showed approximately 35\%
+greater power efficiency than the conventional design. Integrated the circuit into tree multipliers,
+retaining arithmetic performance while saving power. Published as [2].}
+
+\cvrow{\textbf{Undergraduate Researcher --- Assistive Computer Vision}}{2022}
+\cvrow{Department of Electronics and Telecommunication}{RV College of Engineering}
+\cvdesc{As first author, conceived and built a currency and counterfeit-detection system for blind users. Extracted image features of
+banknotes in MATLAB and mapped them to reference values using machine learning classifiers, delivered as an Android application, with 95\% detection accuracy. Published as [1] and recognized with the AI for Good Award.}
+
+\cvrow{\textbf{Statistical Analysis Project --- \emph{Cricket Score Analytics}}}{Fall 2024}
+\cvrow{STAT 50001 Statistical Computing (Prof.\ G.~Aryal)}{Purdue University Northwest}
+\cvdesc{Led a three-person team in statistical analysis and predictive modeling of batting performance in R, including time-series methods. Carried out most of the analysis, built the complete slide deck, presented as lead speaker alongside the team, and handled the question-and-answer session.}
+\end{cvindent}
+
+% ================= PUBLICATIONS (PEER-REVIEWED) =================
+\cvsection{Publications --- Peer-Reviewed}
+\begin{cvindent}
+\cvbib{[3] \textbf{V.~Balachandra}, S.~Islam and M.~T.~Hossain, ``VertiSplitRAG: Privacy-Preserving
+Retrieval-Augmented Generation Through Vertical Attribute Partitioning,'' \emph{2026 International
+Conference on Smart Applications, Communications and Networking (SmartNets 2026)}, IEEE, Rome, Italy,
+July 2026.}
+\cvbib{[2] H.~Raghuram and \textbf{V.~Balachandra}, ``Design and Analysis of Power and Area Efficient
+4--2 Compressor Circuit for Tree Multiplier,'' \emph{2023 7th International Conference on Computation
+System and Information Technology for Sustainable Solutions (CSITSS)}, pp.~1--6, IEEE, 2023.}
+\cvbib{[1] \textbf{V.~Balachandra}, S.~Hoysala and V.~H.~Pavankumar, ``Currency and Fake Currency
+Detection Using Machine Learning and Image Processing --- An Application for Blind People Using Android
+Studio,'' \emph{2022 International Conference on Automation, Computing and Renewable Systems (ICACRS)},
+pp.~274--277, IEEE, 2022.}
+\vspace{2pt}
+\cvline{\fontsize{9pt}{11pt}\selectfont Papers [1] and [2] are indexed under the author-name form
+\emph{B.~Vaishak}, and my undergraduate transcript records my name as \emph{Vaishak B}; the B stands
+for Balachandra.}
+\end{cvindent}
+
+% ================= NON-PEER-REVIEWED =================
+\cvsection{Publications --- Non-Peer-Reviewed}
+\begin{cvindent}
+\cvbib{V.~Balachandra, ``VertiSplitRAG: Privacy-Preserving Retrieval-Augmented Generation Through
+Vertical Attribute Partitioning,'' M.S.\ thesis, Purdue University Northwest, Hammond, Indiana, May
+2026. \href{https://doi.org/10.25394/PGS.32166906}{doi:10.25394/PGS.32166906}}
+\end{cvindent}
+
+% ================= PRESENTATIONS =================
+\cvsection{Conference Presentations}
+\begin{cvindent}
+\cvbib{V.~Balachandra, S.~Islam and M.~T.~Hossain, ``VertiSplitRAG: Privacy-Preserving
+Retrieval-Augmented Generation Through Vertical Attribute Partitioning,'' 2026 International Conference
+on Smart Applications, Communications and Networking (SmartNets 2026), Rome, Italy. Presented virtually
+by the author, Session B8v, Cryptography and Data Privacy, 8 July 2026.}
+
+\end{cvindent}
+
+% ================= HONORS AND AWARDS =================
+\cvsection{Honors and Awards}
+\begin{cvindent}
+\cvrow{\textbf{Best Student Researcher}}{April 2024}
+\cvrow{Department of Electronics and Telecommunication Engineering, RV College of Engineering}{}
+\vspace{5pt}
+\cvrow{\textbf{AI for Good Award}}{2022}
+\cvrow{IEEE ICACRS, for paper [1]}{}
+\vspace{5pt}
+\cvrow{\textbf{Karnataka State Rank 22, Pre-University (Grade 12) Examination}}{2020}
+\cvrow{Physics, Chemistry, Mathematics and Biology: 575/600; Mathematics 99/100}{}
+\vspace{4pt}
+\end{cvindent}
+
+% ================= TEACHING =================
+\cvsection{Teaching and Mentoring}
+\begin{cvindent}
+
+\cvrow{\textbf{Grader --- CS 51530, Programming Languages}}{Fall 2025}
+\cvrow{Department of Computer Science}{Purdue University Northwest}
+\cvdesc{Sought the position directly on seeing it advertised, having earned an A+ in the course the
+preceding semester. Served as sole grader for the full term, assessing every submission for
+the entire cohort and returning each assignment set on schedule.}
+
+\cvrow{\textbf{Peer Instructor (informal), Purdue University Northwest}}{2024 -- 2025}
+\cvdesc{Taught course material to groups of five to nine classmates in university residence ahead of
+assessments, self-initiated and without formal appointment.}
+
+\cvrow{\textbf{Educator and Volunteer Coordinator --- Agastya International Foundation}}{}
+\cvrow{}{Bengaluru, India}
+\cvdesc{Taught hands-on science to schoolchildren in Kannada and English using low-cost demonstration
+materials, and coordinated other student volunteers delivering the same program.}
+\end{cvindent}
+
+% ================= EMPLOYMENT =================
+\cvsection{Employment}
+\begin{cvindent}
+\cvrow{\textbf{Quantitative Research Engineering Intern}}{September 2026 -- present}
+\cvrow{Seattle, Washington, United States}{}
+\cvdesc{Prepare and clean market data for research use. Build quantitative models and the supporting
+data pipelines in Python and SQL. Conduct regression and time-series analysis, and backtest strategies against historical data.}
+
+\cvrow{\textbf{AI Research Intern}}{Nov -- Dec 2023}
+\cvrow{BOSTON-RVCE Centre of Excellence in AI Research}{Bengaluru, India}
+\cvdesc{Formulated feature-extraction models and statistical classifiers in MATLAB for real-time signal and pattern recognition, and evaluated precision--recall trade-offs and error distributions to make inference robust on noisy sensor data.}
+\end{cvindent}
+
+% ================= LEADERSHIP AND SERVICE =================
+\cvsection{Leadership and Service}
+\begin{cvindent}
+
+\cvrow{\textbf{Treasurer and Event Coordinator --- Indian Student Association}}{Dec 2024 -- Feb 2026}
+\cvrow{Purdue University Northwest}{}
+\cvdesc{Held financial responsibility for the association and coordinated its events program. Covered
+the duties of president and vice-president for part of the term. Organized Diwali and Holi for an
+international student community largely unable to travel home for either, and supported incoming
+international students on arrival.}
+
+\cvrow{\textbf{Vice President --- Student In Research Empowerment Network}}{Mar -- Aug 2025}
+\cvrow{(SIREN), Purdue University Northwest}{}
+\cvdesc{Organized faculty meet-and-greets and technical meetings connecting students with researchers.}
+
+\cvrow{\textbf{Blood Bank Supervisor --- Rotary Club}}{Bengaluru, India}
+\vspace{5.5pt}
+
+\cvrow{\textbf{Student Volunteer --- National Service Scheme}}{Bengaluru, India}
+\end{cvindent}
+
+% ================= SKILLS =================
+\cvsection{Technical Skills}
+\begin{cvindent}
+\cvlab{Programming.}{Python, R, SQL, C++, C, MATLAB, \LaTeX.}
+\cvlab{Statistical and quantitative methods.}{Statistical computing; regression analysis; time-series
+analysis; backtesting against historical data; integral transforms and signal processing.}
+\cvlab{Machine learning.}{Generative adversarial networks; retrieval-augmented generation; evaluation
+of large language model outputs for faithfulness and latency.}
+\cvlab{Privacy engineering.}{Differential privacy; privacy-budget accounting; attribute-level
+partitioning and cross-attribute isolation.}
+\cvlab{Languages.}{English; Kannada (native); Hindi.}
+\end{cvindent}
+
+% ================= PROFESSIONAL DEVELOPMENT =================
+\cvsection{Professional Development}
+\begin{cvindent}
+\cvline{Financial Edge Training: \emph{The Investment Banker}, \emph{The Portfolio Manager},
+\emph{The Trader}. In progress, approximately half complete, 2026.}
+\cvline{Independent study, ongoing: fundamental and technical analysis of listed companies from their
+annual reports and shareholding disclosures.}
+\end{cvindent}
+
+\end{document}
