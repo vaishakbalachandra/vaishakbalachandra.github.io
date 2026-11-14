@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaishak Balachandra · Estimation, regimes and decisions under uncertainty</title>
+<meta name="description" content="Vaishak Balachandra studies how to estimate hidden states and hidden regimes from noisy financial data, and how to act on estimates that are never fully trustworthy. M.S. Computer Science (thesis), Purdue University Northwest; IEEE SmartNets 2026.">
+<meta name="author" content="Vaishak Balachandra">
+<link rel="canonical" href="https://vaishakbalachandra.github.io/">
+<meta name="theme-color" content="#faf9f6">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Vaishak Balachandra">
+<meta property="og:title" content="Vaishak Balachandra">
+<meta property="og:description" content="Estimating hidden states and hidden regimes from noisy financial data, and deciding how to act on estimates that are never fully trustworthy.">
+<meta property="og:url" content="https://vaishakbalachandra.github.io/">
+<meta property="og:image" content="https://vaishakbalachandra.github.io/assets/img/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="profile:first_name" content="Vaishak">
+<meta property="profile:last_name" content="Balachandra">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/newsreader-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+  // Apply a saved theme before first paint, so there is no flash.
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vaishak Balachandra",
+  "url": "https://vaishakbalachandra.github.io/",
+  "image": "https://vaishakbalachandra.github.io/assets/img/vaishak.jpg",
+  "jobTitle": "Quantitative Research Engineering Intern",
+  "address": { "@type": "PostalAddress", "addressLocality": "Seattle", "addressRegion": "WA", "addressCountry": "US" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Purdue University Northwest" },
+    { "@type": "CollegeOrUniversity", "name": "RV College of Engineering" }
+  ],
+  "knowsAbout": ["State-space models", "Kalman filtering", "Regime switching", "Time series", "Robust optimization", "Quantitative finance", "Privacy-preserving machine learning"],
+  "sameAs": [
+    "https://github.com/vaishakbalachandra",
+    "https://www.linkedin.com/in/vaishakbalachandra/"
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top">Vaishak Balachandra</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="cv/Vaishak_Balachandra_CV.pdf">CV</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch between light and dark theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-id">
+          <div class="portrait">
+            <picture>
+              <source srcset="assets/img/vaishak.webp" type="image/webp">
+              <img src="assets/img/vaishak.jpg" alt="Portrait of Vaishak Balachandra" width="640" height="799">
+            </picture>
+          </div>
+          <div>
+            <p class="kicker">Estimation&nbsp;· Regimes&nbsp;· Robust&nbsp;decisions</p>
+            <h1>Vaishak Balachandra</h1>
+          </div>
+        </div>
+        <p class="lede">I study what can be inferred about something from the part of it you are allowed to see. In markets, that means estimating hidden states, and the hidden regimes they move between, from prices, company filings and ownership data, and then deciding how to act on an estimate that is never fully trustworthy.</p>
+        <ul class="meta-list">
+          <li>M.S. Computer Science (thesis), Purdue University Northwest, 2026&nbsp;· GPA 3.82/4.00</li>
+          <li>B.E. Electronics and Telecommunication Engineering, RV College of Engineering, 2024</li>
+          <li>Quantitative research engineering intern, Seattle&nbsp;· applying to PhD programs for&nbsp;2027</li>
+        </ul>
+        <div class="actions">
+          <a class="btn primary" href="cv/Vaishak_Balachandra_CV.pdf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4.5 17.5v1.5A1.5 1.5 0 0 0 6 20.5h12a1.5 1.5 0 0 0 1.5-1.5v-1.5"/></svg>
+            CV (PDF)
+          </a>
+          <a class="btn" href="#contact" data-user="me.vaishakbalachandra" data-domain="gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+            Email
+          </a>
+          <a class="btn" href="https://github.com/vaishakbalachandra" rel="me">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/vaishakbalachandra/" rel="me">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.74 0-2 1.35-2 2.75V21h-4z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <figure class="figure-card" aria-labelledby="kf-cap">
+        <div class="figure-head">
+          <span class="figure-title">The problem, in one picture</span>
+          <button class="replay" id="kf-replay" type="button">Replay</button>
+        </div>
+        <div class="figure-canvas">
+          <canvas id="kf-canvas" role="img" aria-label="Chart: noisy observations of a hidden state, the true state as a dashed line, and a Kalman filter estimate with its uncertainty band, which widens after a regime change partway through."></canvas>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="swatch dot"></i>What you observe</span>
+          <span><i class="swatch truth"></i>Hidden state</span>
+          <span><i class="swatch"></i>Filter estimate</span>
+          <span><i class="swatch band"></i>95% band</span>
+          <span><i class="swatch regime"></i>New regime</span>
+        </div>
+        <figcaption id="kf-cap">A Kalman filter tracks a hidden state from noisy observations. Partway through, the hidden process jumps to a new level and becomes more volatile, without announcement. The filter's band widens while it re-learns. Doing this well, with prices, filings and ownership data, is the research I want to do.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section class="section" id="research">
+    <div class="wrap section-grid">
+      <div class="section-label"><span class="num">01</span><h2>Research</h2></div>
+      <div class="section-body reveal">
+        <h3 class="lead-title">Hidden states, hidden regimes</h3>
+        <p>A price is a noisy observation of something underneath it: what a company is worth, what a crowd believes, what a few people already know. A Kalman filter can estimate a hidden state like that, but only because it knows the rules by which the state moves. Markets do not offer that comfort. Their rules change, usually without announcing it, and a model that worked yesterday can be quietly wrong today.</p>
+        <p>My research interest has two parts.</p>
+        <ol class="questions">
+          <li><strong>Estimation and detection</strong>Prices are a fast channel; company filings and ownership disclosures are slow, sparse and partly written in words. Can a model that reads both detect a change in a company's regime before the price reflects it, and what, measurably, separates the two channels when they disagree?</li>
+          <li><strong>Decision</strong>Once such an estimate exists, with an error attached and some probability that the regime has already moved, how should capital be allocated on it when the model itself may be wrong?</li>
+        </ol>
+        <ul class="tags" aria-label="Research interests">
+          <li>Latent-state estimation</li>
+          <li>Regime switching</li>
+          <li>Mixed-frequency data</li>
+          <li>Optimal stopping</li>
+          <li>Robust optimization</li>
+          <li>Partial observability</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section class="section" id="publications">
+    <div class="wrap section-grid">
+      <div class="section-label"><span class="num">02</span><h2>Publications</h2></div>
+      <div class="section-body reveal">
+        <ol class="pubs">
+          <li class="pub">
+            <div class="pub-year">2026</div>
+            <div>
+              <p class="pub-title">VertiSplitRAG: Privacy-Preserving Retrieval-Augmented Generation Through Vertical Attribute Partitioning</p>
+              <p class="pub-authors"><span class="me">V. Balachandra</span>, S. Islam, M. T. Hossain</p>
+              <p class="pub-venue">International Conference on Smart Applications, Communications and Networking (SmartNets 2026), IEEE, Rome, Italy</p>
+              <div class="pub-links">
+                <a class="chip" href="https://doi.org/10.25394/PGS.32166906">Full thesis (DOI)</a>
+                <a class="chip" href="https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=VertiSplitRAG">IEEE Xplore</a>
+                <span class="chip">Presented July 2026</span>
+              </div>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-year">2023</div>
+            <div>
+              <p class="pub-title">Design and Analysis of Power and Area Efficient 4–2 Compressor Circuit for Tree Multiplier</p>
+              <p class="pub-authors">H. Raghuram, <span class="me">V. Balachandra</span></p>
+              <p class="pub-venue">7th International Conference on Computation System and Information Technology for Sustainable Solutions (CSITSS), IEEE, pp. 1–6</p>
+              <div class="pub-links">
+                <a class="chip" href="https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=Power%20and%20Area%20Efficient%204-2%20Compressor%20Circuit%20for%20Tree%20Multiplier">IEEE Xplore</a>
+              </div>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-year">2022</div>
+            <div>
+              <p class="pub-title">Currency and Fake Currency Detection Using Machine Learning and Image Processing: An Application for Blind People Using Android Studio</p>
+              <p class="pub-authors"><span class="me">V. Balachandra</span>, S. Hoysala, V. H. Pavankumar</p>
+              <p class="pub-venue">International Conference on Automation, Computing and Renewable Systems (ICACRS), IEEE, pp. 274–277</p>
+              <div class="pub-links">
+                <a class="chip" href="https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=Currency%20and%20Fake%20Currency%20Detection%20Blind%20People%20Android%20Studio">IEEE Xplore</a>
+                <a class="chip" href="https://github.com/vaishakbalachandra/Currency-and-Fake-Currency-Detection">Code</a>
+                <span class="chip award">AI for Good Award</span>
+              </div>
+            </div>
+          </li>
+          <li class="pub">
+            <div class="pub-year">Thesis</div>
+            <div>
+              <p class="pub-title">VertiSplitRAG: Privacy-Preserving Retrieval-Augmented Generation Through Vertical Attribute Partitioning</p>
+              <p class="pub-authors"><span class="me">V. Balachandra</span>. Advisor: Prof. Shafkat Islam. Committee: Prof. Hairong Zhao, Prof. Yang Ni</p>
+              <p class="pub-venue">M.S. thesis, Purdue University Northwest, May 2026</p>
+              <div class="pub-links">
+                <a class="chip" href="https://doi.org/10.25394/PGS.32166906">doi:10.25394/PGS.32166906</a>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <p class="note">The 2022 and 2023 papers are indexed under the author name B. Vaishak.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="section" id="projects">
+    <div class="wrap section-grid">
+      <div class="section-label"><span class="num">03</span><h2>Research projects</h2></div>
+      <div class="section-body reveal">
+        <article class="feature">
+          <div class="feature-top">
+            <h3>Privacy by architecture for retrieval-augmented generation</h3>
+            <span class="eyebrow">M.S. thesis&nbsp;· 2025–2026</span>
+          </div>
+          <dl class="pid">
+            <div><dt>Problem</dt><dd>Retrieval systems for language models encode every sensitive attribute of a record together and add protection afterwards, so information can leak across attributes.</dd></div>
+            <div><dt>Idea</dt><dd>Split each record by attribute before encoding, so that no single component ever observes a whole record, and recombine only at the end.</dd></div>
+            <div class="result"><dt>Result</dt><dd>Of four systems tested on synthetic medical records, three gradually exhausted their privacy budget; the multi-model design kept all of it, with faithfulness comparable to the baseline.</dd></div>
+          </dl>
+          <div class="stack">
+            <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">vLLM</span><span class="chip">LangGraph</span><span class="chip">Vector database</span>
+            <a class="chip" href="https://doi.org/10.25394/PGS.32166906">Read the thesis</a>
+          </div>
+        </article>
+
+        <div class="cards">
+          <article class="card">
+            <span class="eyebrow">Statistics&nbsp;· Fall 2024</span>
+            <h3>Cricket score analytics</h3>
+            <p>Statistical analysis and predictive modeling of batting performance in R, including time-series methods. I led a team of three, did most of the analysis and presented the work.</p>
+            <div class="card-foot">
+              <span class="chip">R</span><span class="chip">Time series</span>
+              <a class="chip" href="https://github.com/vaishakbalachandra/Cricket-Analytics-Batting-Performance-Analysis-Prediction">Code</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Undergraduate capstone&nbsp;· 2023–2024</span>
+            <h3>PneumoGAN</h3>
+            <div class="metric">94.99%<small>detection accuracy</small></div>
+            <p>A generative adversarial network that synthesizes chest X-rays to augment scarce training data for pneumonia detection, trained on the NIH chest X-ray dataset.</p>
+            <div class="card-foot">
+              <span class="chip">GANs</span><span class="chip">Python</span>
+              <a class="chip" href="https://github.com/vaishakbalachandra/PneumoGAN">Code</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="eyebrow">First-author paper&nbsp;· 2022</span>
+            <h3>Currency recognition for blind users</h3>
+            <div class="metric">95%<small>detection accuracy</small></div>
+            <p>Feature extraction in MATLAB and machine-learning classifiers that recognize banknotes and flag counterfeits, delivered as an Android app. IEEE ICACRS 2022.</p>
+            <div class="card-foot">
+              <span class="chip">MATLAB</span><span class="chip">Android</span><span class="chip award">AI for Good Award</span>
+              <a class="chip" href="https://github.com/vaishakbalachandra/Currency-and-Fake-Currency-Detection">Code</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Circuit design&nbsp;· 2023</span>
+            <h3>Low-power 4–2 compressor</h3>
+            <div class="metric">≈35%<small>greater power efficiency</small></div>
+            <p>Co-designed a power- and area-efficient compressor for tree multipliers using AVLS, LECTOR and adiabatic logic, preserving arithmetic performance. IEEE CSITSS 2023.</p>
+            <div class="card-foot">
+              <span class="chip">VLSI</span><span class="chip">Low-power design</span>
+            </div>
+          </article>
+        </div>
+        <p class="note">More code is on <a href="https://github.com/vaishakbalachandra">GitHub</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE & EDUCATION ================= -->
+  <section class="section" id="experience">
+    <div class="wrap section-grid">
+      <div class="section-label"><span class="num">04</span><h2>Experience &amp; education</h2></div>
+      <div class="section-body reveal">
+        <p class="subhead">Experience</p>
+        <ol class="rows">
+          <li class="row">
+            <div class="row-date">Sep 2026 – now</div>
+            <div>
+              <p class="row-title">Quantitative Research Engineering Intern</p>
+              <p class="row-org">Seattle, Washington</p>
+              <p class="row-desc">Market data preparation, quantitative models and data pipelines in Python and SQL; regression, time-series analysis and backtesting.</p>
+            </div>
+          </li>
+          <li class="row">
+            <div class="row-date">2025 – May 2026</div>
+            <div>
+              <p class="row-title">Graduate Thesis Researcher</p>
+              <p class="row-org">Purdue University Northwest&nbsp;· advisor Prof. Shafkat Islam</p>
+              <p class="row-desc">Designed, built and evaluated the VertiSplitRAG framework; published and presented at IEEE SmartNets 2026.</p>
+            </div>
+          </li>
+          <li class="row">
+            <div class="row-date">Nov – Dec 2023</div>
+            <div>
+              <p class="row-title">AI Research Intern</p>
+              <p class="row-org">BOSTON-RVCE Centre of Excellence in AI Research, Bengaluru</p>
+              <p class="row-desc">Feature-extraction models and statistical classifiers in MATLAB for real-time signal and pattern recognition.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="subhead">Education</p>
+        <ol class="rows">
+          <li class="row">
+            <div class="row-date">2024 – 2026</div>
+            <div>
+              <p class="row-title">M.S. Computer Science (Thesis)</p>
+              <p class="row-org">Purdue University Northwest, Hammond, Indiana&nbsp;· GPA 3.82/4.00</p>
+              <p class="row-desc">Computational Mathematics I (Department of Mathematics), A&nbsp;· Statistical Computing, A&nbsp;· Privacy in AI Models, A+</p>
+            </div>
+          </li>
+          <li class="row">
+            <div class="row-date">2020 – 2024</div>
+            <div>
+              <p class="row-title">B.E. Electronics and Telecommunication Engineering</p>
+              <p class="row-org">RV College of Engineering, Bengaluru&nbsp;· CGPA 8.55/10&nbsp;· final semester 10.00/10</p>
+              <p class="row-desc">Linear Algebra, Statistics and Probability Theory, A&nbsp;· Discrete and Integral Transforms, A&nbsp;· Digital Signal Processing, S (highest grade)</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="subhead">Honors</p>
+        <ol class="rows">
+          <li class="row">
+            <div class="row-date">Apr 2024</div>
+            <div><p class="row-title">Best Student Researcher</p><p class="row-org">Department of Electronics and Telecommunication Engineering, RV College of Engineering</p></div>
+          </li>
+          <li class="row">
+            <div class="row-date">2022</div>
+            <div><p class="row-title">AI for Good Award</p><p class="row-org">IEEE ICACRS, for the currency-recognition paper</p></div>
+          </li>
+          <li class="row">
+            <div class="row-date">2020</div>
+            <div><p class="row-title">Karnataka State Rank 22, Grade 12 examination</p><p class="row-org">575/600&nbsp;· Mathematics 99/100</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEACHING & SERVICE ================= -->
+  <section class="section" id="teaching">
+    <div class="wrap section-grid">
+      <div class="section-label"><span class="num">05</span><h2>Teaching &amp; service</h2></div>
+      <div class="section-body reveal">
+        <ol class="rows">
+          <li class="row">
+            <div class="row-date">Fall 2025</div>
+            <div><p class="row-title">Sole grader, CS 51530 Programming Languages</p><p class="row-org">Purdue University Northwest</p><p class="row-desc">Assessed every submission for the cohort for a full term, the semester after earning an A+ in the course.</p></div>
+          </li>
+          <li class="row">
+            <div class="row-date">2024 – 2025</div>
+            <div><p class="row-title">Peer instructor (self-initiated)</p><p class="row-org">Purdue University Northwest</p><p class="row-desc">Taught course material to groups of five to nine classmates in university residence before assessments.</p></div>
+          </li>
+          <li class="row">
+            <div class="row-date">Dec 2024 – Feb 2026</div>
+            <div><p class="row-title">Treasurer and Event Coordinator</p><p class="row-org">Indian Student Association, Purdue University Northwest</p><p class="row-desc">Managed the budget and organized six or seven cultural events for audiences of three to four hundred.</p></div>
+          </li>
+          <li class="row">
+            <div class="row-date">Mar – Aug 2025</div>
+            <div><p class="row-title">Vice President</p><p class="row-org">Student In Research Empowerment Network (SIREN), Purdue University Northwest</p><p class="row-desc">Organized faculty meet-and-greets and technical meetings connecting students with researchers.</p></div>
+          </li>
+          <li class="row">
+            <div class="row-date">2020 – 2024</div>
+            <div><p class="row-title">Volunteer educator and coordinator</p><p class="row-org">Agastya International Foundation&nbsp;· Rotary Club blood bank&nbsp;· National Service Scheme, Bengaluru</p><p class="row-desc">Taught hands-on science to underprivileged schoolchildren and coordinated other student volunteers.</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section" id="contact">
+    <div class="wrap section-grid">
+      <div class="section-label"><span class="num">06</span><h2>Contact</h2></div>
+      <div class="section-body reveal">
+        <div class="contact-card">
+          <div>
+            <p class="eyebrow" style="margin:0 0 6px">Email is the best way to reach me</p>
+            <a class="email" data-user="me.vaishakbalachandra" data-domain="gmail.com" data-show href="#contact">me.vaishakbalachandra [at] gmail [dot] com</a>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="cv/Vaishak_Balachandra_CV.pdf">CV (PDF)</a>
+            <a class="btn" href="https://github.com/vaishakbalachandra" rel="me">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/vaishakbalachandra/" rel="me">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Vaishak Balachandra&nbsp;· Seattle, Washington</span>
+    <span>Last updated November 2026&nbsp;· No trackers, no&nbsp;cookies</span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/figure.js" defer></script>
+</body>
+</html>

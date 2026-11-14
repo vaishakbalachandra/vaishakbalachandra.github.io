@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vaishakbalachandra.github.io/sitemap.xml
