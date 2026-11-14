@@ -3,18 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found · Vaishak Balachandra</title>
+<title>Page not found | Vaishak Balachandra</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0e3557">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/site.css">
+<style>
+  .lost { min-height: 100vh; display: grid; align-items: center; padding: 96px 0; }
+  .lost h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 6vw, 72px); line-height: 1; letter-spacing: -0.022em; margin: 0 0 22px; }
+  .lost p { font-size: clamp(19px, 1.6vw, 21px); line-height: 1.55; max-width: 32em; margin: 0 0 30px; color: var(--on-field-2); }
+  .lost .code { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--on-field-3); margin: 0 0 16px; }
+</style>
 </head>
 <body>
-<main class="wrap" style="min-height:80vh;display:grid;place-items:center;text-align:center">
-  <div>
-    <p class="kicker">404</p>
-    <h1 style="font-size:clamp(32px,5vw,48px);margin-bottom:12px">This page is a hidden state.</h1>
-    <p style="color:var(--muted);margin-bottom:22px">Nothing was observed at this address.</p>
-    <a class="btn primary" href="/">Back to the homepage</a>
+<main class="hero lost">
+  <div class="wrap">
+    <p class="code">Error 404</p>
+    <h1>Page not found</h1>
+    <p>Nothing is observed at this address. The link may be mistyped, or the page may have moved.</p>
+    <a class="btn btn-solid" href="/">Go to the home page</a>
   </div>
 </main>
 </body>
