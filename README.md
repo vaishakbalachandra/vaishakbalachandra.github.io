@@ -29,4 +29,6 @@ The chart at the top of the page is a small simulation that runs in the browser 
 
 No framework and no build step: GitHub Pages serves the files as they are. To change something, edit the file on GitHub and commit; the site updates in about a minute.
 
+After changing `css/site.css` or a file in `js/`, raise the `?v=` number where `index.html` (and `404.html`, for the stylesheet) links to it, so browsers fetch the new copy instead of a saved old one.
+
 To update the CV, upload the new PDF to `cv/` under the same file name, `Vaishak_Balachandra_CV.pdf`, so every link to it keeps working. Then change "Last updated" in the footer of `index.html`.
